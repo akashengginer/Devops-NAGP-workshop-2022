@@ -19,7 +19,7 @@ pipeline{
     }
     post{
         success{
-            sh "echo success"
+            sh "echo success - test commit auto run"
         }
     }
 }
