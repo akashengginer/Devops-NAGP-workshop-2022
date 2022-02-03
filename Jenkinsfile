@@ -30,7 +30,7 @@ pipeline{
    stage('Upload to Artifactory'){
        steps{
            rtMavenDeployer{
-                id: 'deployer',
+                id: 'deployer-unique-id',
                 serverId: '123456789@artifactory',
                 releaseRepo: 'akash.gupta.test',
                 snapshotRepo: 'akash.gupta.test'
@@ -38,7 +38,7 @@ pipeline{
            rtMavenRun{
                 pom: 'pom.xml',
                 goals: 'clean install',
-                deployerId: 'deployer'
+                deployerId: 'deployer-unique-id'
            }
            rtPublishBuildInfo{
                 serverId: '123456789@artifactory'
