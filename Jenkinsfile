@@ -17,4 +17,9 @@ pipeline{
         }
     }
     }
+    post{
+        success{
+            sh "echo success"
+        }
+    }
 }
