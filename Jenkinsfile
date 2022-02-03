@@ -19,14 +19,32 @@ pipeline{
         sh "mvn test"
         }
     }
-    stage('Sonar Analysis'){
-        steps{
-            withSonarQubeEnv("Test Sonar")
-            {
-                sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar"
-            }
-        }
-    }
+//     stage('Sonar Analysis'){
+//         steps{
+//             withSonarQubeEnv("Test Sonar")
+//             {
+//                 sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar"
+//             }
+//         }
+//     }
+   stage('Upload to Artifactory'){
+       steps{
+           rtMavenDeployer{
+                id: 'deployer',
+                serverId: '123456789@artifactory',
+                releaseRepo: 'akash.gupta.test',
+                snapshotRepo: 'akash.gupta.test'
+           }
+           rtMavenRun{
+                pom: 'pom.xml',
+                goals: 'clean install',
+                deployerId: 'deployer'
+           }
+           rtPublishBuildInfo{
+                serverId: '123456789@artifactory'
+           }
+       }
+       }
     }
     post{
         success{
