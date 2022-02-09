@@ -23,7 +23,7 @@ pipeline{
         steps{
             withSonarQubeEnv("SonarCloud")
             {
-                sh "mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=akashengginer_Devops-NAGP-workshop-2022"
+                sh "mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.8.0.2131:sonar -Dsonar.projectKey=akashengginer_Devops-NAGP-workshop-2022"
             }
         }
     }
