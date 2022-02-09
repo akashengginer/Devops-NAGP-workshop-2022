@@ -19,14 +19,14 @@ pipeline{
         sh "mvn test"
         }
     }
-//     stage('Sonar Analysis'){
-//         steps{
-//             withSonarQubeEnv("Test Sonar")
-//             {
-//                 sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar"
-//             }
-//         }
-//     }
+    stage('Sonar Analysis'){
+        steps{
+            withSonarQubeEnv("Test Sonar")
+            {
+                sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar"
+            }
+        }
+    }
 //    stage('Upload to Artifactory'){
 //        steps{
 //            rtMavenDeployer{
