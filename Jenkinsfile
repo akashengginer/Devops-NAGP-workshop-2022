@@ -21,7 +21,7 @@ pipeline{
     }
     stage('Sonar Analysis'){
         steps{
-            withSonarQubeEnv("Test Sonar")
+            withSonarQubeEnv("SonarCloud")
             {
                 sh "mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=akashengginer_Devops-NAGP-workshop-2022"
             }
