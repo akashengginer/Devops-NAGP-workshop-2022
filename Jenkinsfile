@@ -21,9 +21,9 @@ pipeline{
     }
     stage('Sonar Analysis'){
         steps{
-            withSonarQubeEnv("Test_Sonar")
+            withSonarQubeEnv(installationName: 'Test_Sonar')
             {
-                sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.2:sonar"
+                sh 'mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.2:sonar'
             }
         }
     }
