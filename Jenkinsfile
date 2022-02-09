@@ -21,7 +21,7 @@ pipeline{
     }
     stage('Sonar Analysis'){
         steps{
-            withSonarQubeEnv("SonarCloud")
+            withSonarQubeEnv("Test_Sonar")
             {
                 sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar"
             }
