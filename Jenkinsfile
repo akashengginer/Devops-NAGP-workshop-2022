@@ -44,8 +44,8 @@ pipeline{
            rtMavenDeployer{
                 id: 'deployer',
                 serverId: 'artifatory-server',
-                releaseRepo: 'akash.gupta.test',
-                snapshotRepo: 'akash.gupta.test'
+                releaseRepo: 'nagp-libs-release',
+                snapshotRepo: 'nagp-libs-snapshot'
            }
            rtMavenRun{
                 pom: 'pom.xml',
