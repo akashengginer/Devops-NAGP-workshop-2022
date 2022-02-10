@@ -38,6 +38,7 @@ pipeline{
                     waitForQualityGate abortPipeline: true
                 }
             }
+    }
 //    stage('Upload to Artifactory'){
 //        steps{
 //            rtMavenDeployer{
