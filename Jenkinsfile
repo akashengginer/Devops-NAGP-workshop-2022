@@ -43,13 +43,13 @@ pipeline{
             steps{
                 rtMavenResolver (
                     id: 'resolver-unique-id',
-                    serverId: 'artifactory-serve',
+                    serverId: 'artifactory-server',
                     releaseRepo: 'nagp-libs-release',
                     snapshotRepo: 'nagp-libs-snapshot'
                     )  
                 rtMavenDeployer (
                     id: 'deployer-unique-id',
-                    serverId: 'artifactory-serve',
+                    serverId: 'artifactory-server',
                     releaseRepo: 'nagp-libs-release',
                     snapshotRepo: 'nagp-libs-snapshot'
                     )
