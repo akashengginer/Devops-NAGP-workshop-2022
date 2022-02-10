@@ -77,7 +77,8 @@ pipeline{
     }
     post{
         success{
-            sh "echo success"
+            sh "echo success 1"
+            sh "echo success 2"
         }
     }
 }
