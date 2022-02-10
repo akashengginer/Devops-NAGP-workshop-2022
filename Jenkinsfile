@@ -28,17 +28,20 @@ pipeline{
             {
                 sh 'mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar'
             }
-        }
-    }
-    stage("Quality Gate") {
-            steps {
-                timeout(time: 1, unit: 'HOURS') {
-                    // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
-                    // true = set pipeline to UNSTABLE, false = don't
+             timeout(time: 1, unit: 'HOURS') {
                     waitForQualityGate abortPipeline: true
                 }
-            }
+        }
     }
+//     stage("Quality Gate") {
+//             steps {
+//                 timeout(time: 1, unit: 'HOURS') {
+//                     // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
+//                     // true = set pipeline to UNSTABLE, false = don't
+//                     waitForQualityGate abortPipeline: true
+//                 }
+//             }
+//     }
 //    stage('Upload to Artifactory'){
 //        steps{
 //            rtMavenDeployer{
