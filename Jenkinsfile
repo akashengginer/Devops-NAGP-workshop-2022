@@ -39,24 +39,40 @@ pipeline{
                 }
             }
     }
-   stage('Upload to Artifactory'){
-       steps{
-           rtMavenDeployer{
-                id: 'deployer',
-                serverId: 'artifatory-server',
-                releaseRepo: 'nagp-libs-release',
-                snapshotRepo: 'nagp-libs-snapshot'
+        stage('Creating an Artifactory Server Instance'){
+            steps{
+                rtMavenResolver (
+                    id: 'resolver-unique-id',
+                    serverId: 'artifatory-serve',
+                    releaseRepo: 'nagp-libs-release',
+                    snapshotRepo: 'nagp-libs-snapshot'
+                    )  
+                rtMavenDeployer (
+                    id: 'deployer-unique-id',
+                    serverId: 'artifatory-serve',
+                    releaseRepo: 'nagp-libs-release',
+                    snapshotRepo: 'nagp-libs-snapshot',
+                    )
+                }
            }
-           rtMavenRun{
-                pom: 'pom.xml',
-                goals: 'clean install',
-                deployerId: 'deployer'
-           }
-           rtPublishBuildInfo{
-                serverId: 'artifatory-server'
-           }
-       }
-       }
+//    stage('Upload to Artifactory'){
+//        steps{
+//            rtMavenDeployer{
+//                 id: 'deployer',
+//                 serverId: 'artifatory-server',
+//                 releaseRepo: 'nagp-libs-release',
+//                 snapshotRepo: 'nagp-libs-snapshot'
+//            }
+//            rtMavenRun{
+//                 pom: 'pom.xml',
+//                 goals: 'clean install',
+//                 deployerId: 'deployer'
+//            }
+//            rtPublishBuildInfo{
+//                 serverId: 'artifatory-server'
+//            }
+//        }
+//        }
     }
     post{
         success{
