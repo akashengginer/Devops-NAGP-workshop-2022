@@ -20,6 +20,9 @@ pipeline{
         }
     }
     stage('Sonar Analysis'){
+        tools {
+            jdk "jdk17"
+        }
         steps{
             withSonarQubeEnv(installationName: 'Test_Sonar')
             {
