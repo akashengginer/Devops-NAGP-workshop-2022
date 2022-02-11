@@ -57,12 +57,6 @@ pipeline{
            }
    stage('Upload to Artifactory'){
        steps{
-//            rtMavenDeployer{
-//                 id: 'deployer',
-//                 serverId: 'artifatory-server',
-//                 releaseRepo: 'nagp-libs-release',
-//                 snapshotRepo: 'nagp-libs-snapshot'
-//            }
            rtMavenRun(
                 pom: 'pom.xml',
                 goals: 'clean install',
